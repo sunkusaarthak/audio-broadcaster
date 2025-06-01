@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Streamer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="home-page">
+    <div class="home-container">
+        <h1 class="home-title">Welcome to Chat Streamer</h1>
+        <form class="home-form" action="/" method="POST" onsubmit="return validateForm(event.submitter.value)">
+            <label for="room-id" class="home-label">Enter Room ID:</label>
+            <input type="text" id="room-id" name="room_id" class="home-input" placeholder="Room ID">
+            <div class="home-buttons">
+                <button type="submit" name="action" value="join" class="home-button">Join Room</button>
+                <button type="submit" name="action" value="admin" class="home-button">Create Room</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function validateForm(action) {
+            const roomIdInput = document.getElementById('room-id');
+            if (action === 'join' && !roomIdInput.value.trim()) {
+                alert('Please enter a Room ID to join.');
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+    </script>
+</body>
+</html>

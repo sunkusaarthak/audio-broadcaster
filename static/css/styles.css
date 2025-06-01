@@ -1,0 +1,183 @@
+/* General styles for all pages */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Scoped styles for home.html */
+.home-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.home-container {
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.home-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.home-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.home-label {
+    font-size: 1rem;
+    color: #555;
+    text-align: left;
+}
+
+.home-input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.home-input:focus {
+    border-color: #007aff;
+}
+
+.home-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.home-button {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #007aff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.home-button:hover {
+    background-color: #005bb5;
+}
+
+.home-button:active {
+    background-color: #004a94;
+}
+
+/* Scoped styles for create_room.html and join_room.html */
+.room-page .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 600px;
+    height: 90vh; /* Adjust to fit within the screen */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #000;
+    text-align: center;
+}
+
+p {
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+}
+
+#chat-box {
+    flex: 1; /* Allow the chat box to grow and shrink dynamically */
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+#chat-box p {
+    margin: 0;
+    margin-bottom: 10px; /* Add space between messages */
+    padding: 8px 10px;
+    border-radius: 5px;
+    background-color: #e8e8e8;
+    color: #333;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+footer {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #007aff;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #007aff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+button:active {
+    background-color: #004a94;
+}

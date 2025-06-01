@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Room</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="room-page">
+    <div class="container">
+        <h1>Room Created</h1>
+        <p>Your Room ID: <strong>{{ room_id }}</strong></p>
+        <div id="chat-box"></div>
+        <footer>
+            <input type="text" id="message" placeholder="Type your message">
+            <button onclick="sendMessage()">Send</button>
+        </footer>
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        const socket = io.connect('http://localhost:5000');
+        socket.emit('create_room', '{{ room_id }}');
+
+        function sendMessage() {
+            const chatBox = document.getElementById('chat-box');
+            const messageInput = document.getElementById('message');
+            const message = messageInput.value.trim();
+            if (message) {
+                socket.emit('broadcast_data', message);
+                const paragraph_element = document.createElement('p');
+                paragraph_element.textContent = message;
+                chatBox.appendChild(paragraph_element);
+                messageInput.value = '';
+                scrollToBottom(); // Scroll to the latest message
+            }
+        }
+
+        // Automatically scroll to the bottom of the chat box
+        function scrollToBottom() {
+            const chatBox = document.getElementById('chat-box');
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Add event listener for "Enter" key press
+        document.getElementById('message').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent default form submission
+                sendMessage();
+            }
+        });
+
+        // Listen for incoming messages and update the chat box
+        socket.on('receive_data', function(data) {
+            const chatBox = document.getElementById('chat-box');
+            const paragraph_element = document.createElement('p');
+            paragraph_element.textContent = data;
+            chatBox.appendChild(paragraph_element);
+            scrollToBottom(); // Scroll to the latest message
+        });
+    </script>
+</body>
+</html>
