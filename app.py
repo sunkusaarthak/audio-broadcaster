@@ -3,6 +3,7 @@ import socketio
 import threading
 import uuid
 import eventlet
+import base64
 
 app = Flask(__name__)
 sio = socketio.Server(cors_allowed_origins="*")
@@ -63,8 +64,10 @@ def create_room_event(sid, unique_room_id):
 
 @sio.on('broadcast_data')
 def broadcast_data(sid, data):
+    print(f"Received audio data from {sid}: {len(data)} bytes")
     if sid in room_owners:
         room_id = room_owners[sid]
+        print(f"Broadcasting audio data to room {room_id}")
         sio.emit("receive_data", data, to=rooms[room_id])
 
 def start_heartbeat():
